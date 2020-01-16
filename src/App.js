@@ -4,6 +4,8 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Toast from 'react-bootstrap/Toast';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import { BrowserRouter, Link } from 'react-router-dom'
+import Router from './Router'
 import { connect } from 'react-redux'
 
 const ExampleToast = ({ children }) => {
@@ -35,6 +37,11 @@ class App extends Component {
               🎉
             </span>
           </ExampleToast>
+          <BrowserRouter>
+            <Router />
+            <Link to="/"> Routing Component 0 </Link>
+            <Link to="/second"> Routing Component 2 </Link>
+          </BrowserRouter>
         </Jumbotron>
       </Container>
     )
