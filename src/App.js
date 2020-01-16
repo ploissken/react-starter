@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import './App.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Toast from 'react-bootstrap/Toast';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import { connect } from 'react-redux'
 
 const ExampleToast = ({ children }) => {
   const [show, toggleShow] = useState(true);
@@ -18,23 +19,33 @@ const ExampleToast = ({ children }) => {
         <Toast.Body>{children}</Toast.Body>
       </Toast>
     </>
-  );
-};
-
-function App() {
-  return (
-    <Container className="p-3">
-      <Jumbotron>
-        <h1 className="header">Welcome To React-Bootstrap</h1>
-        <ExampleToast className="toast">
-          We now have Toasts
-          <span role="img" aria-label="tada">
-            🎉
-          </span>
-        </ExampleToast>
-      </Jumbotron>
-    </Container>
-  );
+  )
 }
 
-export default App;
+class App extends Component {
+  render() {
+    return (
+      <Container className="p-3">
+        <Jumbotron>
+          <h1 className="header">Welcome To React-Bootstrap</h1>
+          <h4>  { this.props.sample.message } </h4>
+          <ExampleToast className="toast">
+            We now have Toasts
+            <span role="img" aria-label="tada">
+              🎉
+            </span>
+          </ExampleToast>
+        </Jumbotron>
+      </Container>
+    )
+  }
+}
+
+const mapStateToProps = (state) => {
+  console.log('hi, my name is state', state)
+  return {
+    sample: state.sample
+  }
+}
+
+export default connect(mapStateToProps)(App)
