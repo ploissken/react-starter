@@ -5,11 +5,14 @@ import Navbar from 'react-bootstrap/Navbar'
 class MainMenu extends Component {
   render() {
     return (
-      <Navbar className="ml-auto" style={{ "backgroundColor": "#ddd" }}>
-        <Navbar.Brand className="mr-auto" >ReactStarter</Navbar.Brand>
-        <Link to="/" className="nav-link">Home</Link>
-        <Link to="/second" className="nav-link"> Second Component </Link>
-        <Link to="/main" className="nav-link"> Component Third </Link>
+      <Navbar bg="light" expand="lg" className="mr-auto">
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse className="justify-content-end">
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/second" className="nav-link"> Second </Link>
+          <Link to="/main" className="nav-link"> Third </Link>
+        </Navbar.Collapse>
       </Navbar>
     )
   }
