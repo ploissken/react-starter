@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import SecondComponent from './SecondComponent'
-import ThirdComponent from './ThirdComponent'
+import SecondComponent from './components/SecondComponent'
+import ThirdComponent from './components/ThirdComponent'
 
 class Router extends Component {
   render() {

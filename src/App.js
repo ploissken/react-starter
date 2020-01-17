@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import { connect } from 'react-redux'
-import MainGrid from './MainGrid'
+import MainGrid from './components/MainGrid'
 
 class App extends Component {
   render() {
