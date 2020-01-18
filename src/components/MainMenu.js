@@ -9,9 +9,9 @@ class MainMenu extends Component {
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/second" className="nav-link"> Second </Link>
-          <Link to="/main" className="nav-link"> Third </Link>
+          <Link to="/" className="nav-link"> Home </Link>
+          <Link to="/second" className="nav-link"> Extratos </Link>
+          <Link to="/main" className="nav-link"> Mock </Link>
         </Navbar.Collapse>
       </Navbar>
     )

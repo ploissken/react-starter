@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import './style/App.css'
 import { connect } from 'react-redux'
 import MainGrid from './components/MainGrid'
 
