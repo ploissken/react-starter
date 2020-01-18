@@ -10,12 +10,15 @@
     margin-top: 1em;
   }
 }
-
+.apply-filter-btn {
+  background-color: #fff;
+}
 .container {
   border-radius: 3px;
 }
 
-#balance-container {
+#balance-container,
+#filter-container {
   padding: 1em;
   margin-top: 1em;
   margin-bottom: 1em;

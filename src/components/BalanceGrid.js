@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import AccountBalance from './AccountBalance'
+import AccountFilter from './AccountFilter'
+import AccountFeed from './AccountFeed'
 import { connect } from 'react-redux'
 
 
-class ThirdComponent extends Component {
+class BalanceGrid extends Component {
   render() {
     return (
       <Container>
         <Row>
-          le terceiro
-        </Row>
-        <Row>
-          soy yo
+          <Col sm={12} md={4}>
+            <AccountFilter />
+            <AccountBalance />
+          </Col>
+          <Col sm={12} md={8}>
+            <AccountFeed />
+          </Col>
         </Row>
       </Container>
     )
@@ -26,4 +33,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(ThirdComponent)
+export default connect(mapStateToProps)(BalanceGrid)
