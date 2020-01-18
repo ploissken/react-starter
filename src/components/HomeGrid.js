@@ -2,21 +2,18 @@ import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import AccountBalance from './AccountBalance'
+import AccountFeed from './AccountFeed'
 import { connect } from 'react-redux'
 
 
-class SecondComponent extends Component {
+class Home extends Component {
   render() {
     return (
       <Container>
         <Row>
-          <Col sm={8}>sm=8</Col>
-          <Col sm={4}>sm=4</Col>
-        </Row>
-        <Row>
-          <Col sm>sm=true</Col>
-          <Col sm>sm=true</Col>
-          <Col sm>sm=true</Col>
+          <Col sm={12} md={4}> <AccountBalance /> </Col>
+          <Col sm={12} md={8}> <AccountFeed /> </Col>
         </Row>
       </Container>
     )
@@ -30,4 +27,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(SecondComponent)
+export default connect(mapStateToProps)(Home)
