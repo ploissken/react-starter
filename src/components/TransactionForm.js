@@ -11,28 +11,37 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
 class TreansactionForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      localDate: new Date(),
+      opType: undefined
+    }
+  }
+  handleChanged(newValue) {
+    this.props.updateModel(newValue)
+  }
   render () {
     const transactionDropdown = (
       <DropdownButton as={Col} size="sm" xs="6" lg="3"
-        title="tipo de transação"
-        className="form-dropdown"
-        variant="outline-secondary"
-        id="ddown"
-        key="ddown"
-      >
-        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+        onSelect={opId => this.handleChanged({id: 'type', value: opId})}
+        selected={this.props.model.type}
+        title={this.props.model.type || 'tipo de transação'}
+        variant="outline-secondary">
+        <Dropdown.Item eventKey="credit">crédito</Dropdown.Item>
+        <Dropdown.Item eventKey="debit">débito</Dropdown.Item>
       </DropdownButton>
     )
 
     const dateInput = (
       <Form.Group as={Col} xs="6" lg="3">
         <DatePicker
+          id="date"
           className="form-control form-control-sm"
           isClearable
           placeholderText="data"
-          selected={null}
-          onChange={newDate => console.log('olar')}/>
+          selected={this.props.model.date}
+          onChange={newDate => this.handleChanged({id: 'date', value: newDate})}/>
       </Form.Group>
     )
 
@@ -41,9 +50,12 @@ class TreansactionForm extends Component {
         <Form.Group as={Col} xs="6" lg="3">
           <InputGroup size="sm">
             <FormControl
-              placeholder={`${title}`}
-              aria-label={`${title}`}
+              id={`${title.id}`}
+              placeholder={`${title.label}`}
+              value={this.props.model[title.id]}
+              aria-label={`${title.label}`}
               aria-describedby="basic-addon2"
+              onChange={e => this.handleChanged({ id: e.target.id, value: e.target.value })}
             />
           </InputGroup>
         </Form.Group>
@@ -55,8 +67,8 @@ class TreansactionForm extends Component {
         <Form.Row>
           { transactionDropdown }
           { dateInput }
-          { textInput('descrição') }
-          { textInput('valor') }
+          { textInput({ label: 'descrição', id: 'description' })}
+          { textInput({ label: 'valor', id: 'value' }) }
         </Form.Row>
       </Container>
     )

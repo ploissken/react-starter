@@ -40,7 +40,9 @@
   border: 1px solid #ced4da;
   text-align: left;
 }
-
+.credit.row {
+  color: #9abf35;
+}
 #balance-container {
   padding: 1em;
   margin-top: 1em;

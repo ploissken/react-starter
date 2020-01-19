@@ -10,31 +10,30 @@ class AccountFeed extends Component {
     const parsedDate = `${itemDate.getDate()} ${itemDate.toDateString().substr(4, 3).toUpperCase()}`
     return (
       <Row key={item.id}
-        className={item.operation === 'credit' ? 'credit' : 'debit'}>
+        className={item.type}>
         <Col xs={3}> {parsedDate} </Col>
-        <Col xs={7}> {item.description} </Col>
-        <Col xs={2} > {item.value} </Col>
+        <Col xs={6}> {item.description} </Col>
+        <Col xs={3} > R$ {parseFloat(item.value).toFixed(2).replace('.', ',')} </Col>
       </Row>
     )
   }
 
   render() {
     const items = []
-    this.props.transactions.list.forEach(transaction => {
+    this.props.transactions.fullList.forEach(transaction => {
       items.push(this.parseItem(transaction))
     })
 
     return (
-        <Container id="feed-container" className={ this.props.filterOn ? 'filter-on' : 'filter-off' }>
-          {items}
-        </Container>
+      <Container id="feed-container" className={ this.props.filterOn ? 'filter-on' : 'filter-off' }>
+        {items}
+      </Container>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    sample: state.sample,
     transactions: state.transactions
   }
 }
