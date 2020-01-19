@@ -4,30 +4,26 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { connect } from 'react-redux'
 
-const feedItem = {
-  id: 1,
-  date: '03 NOV',
-  description: 'Pag*Mecanicatonimek',
-  value: 214.50,
-  operation: 'credit'
-}
-
 class AccountFeed extends Component {
   parseItem (item) {
+    const itemDate = new Date(item.date)
+    const parsedDate = `${itemDate.getDate()} ${itemDate.toDateString().substr(4, 3).toUpperCase()}`
     return (
-      <Row key={Math.random()}>
-        <Col xs={3}> {item.date} </Col>
+      <Row key={item.id}
+        className={item.operation === 'credit' ? 'credit' : 'debit'}>
+        <Col xs={3}> {parsedDate} </Col>
         <Col xs={7}> {item.description} </Col>
-        <Col xs={2}> {item.value} </Col>
+        <Col xs={2} > {item.value} </Col>
       </Row>
     )
   }
 
   render() {
     const items = []
-    for (var i = 0; i < 50; i++) {
-      items.push(this.parseItem(feedItem))
-    }
+    this.props.transactions.list.forEach(transaction => {
+      items.push(this.parseItem(transaction))
+    })
+
     return (
         <Container id="feed-container" className={ this.props.filterOn ? 'filter-on' : 'filter-off' }>
           {items}
@@ -38,7 +34,8 @@ class AccountFeed extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    sample: state.sample
+    sample: state.sample,
+    transactions: state.transactions
   }
 }
 
