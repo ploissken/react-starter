@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
+import HackModal from './HackModal'
 
 class MainMenu extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      show: false
+    }
+  }
   render() {
     return (
+      <>
       <Navbar id="main-menu" expand="lg" className="mr-auto" bg="dark" variant="dark">
         <Navbar.Brand className="logo" >React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
-          <Link to="/home" className="nav-link"> Home </Link>
-          <Link to="/balance" className="nav-link"> Extratos </Link>
-          <Link to="/mock" className="nav-link"> Mock </Link>
+          <Link to="/account/home" className="nav-link"> Home </Link>
+          <Link to="/account/balance" className="nav-link"> Extratos </Link>
+          <Link to="/account/hack" className="nav-link"
+            onClick={() => this.setState({ show: !this.state.show })}>
+            Mock
+          </Link>
+          <HackModal
+            show={this.state.show}
+            displayChange={() => this.setState({ show: !this.state.show })}
+            />
         </Navbar.Collapse>
       </Navbar>
+      </>
     )
   }
 }

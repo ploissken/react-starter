@@ -1,47 +1,36 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import { connect } from 'react-redux'
 
+const feedItem = {
+  id: 1,
+  date: '03 NOV',
+  description: 'Pag*Mecanicatonimek',
+  value: 214.50,
+  operation: 'credit'
+}
 
 class AccountFeed extends Component {
-  render() {
+  parseItem (item) {
     return (
-        <Container id="feed-container">
-          <p>
-            03 NOV Pag*Mecanicatonimek 2/2	214,50
-            03 NOV Leroy Merlin 3/3	287,28
-            03 NOV Mercpago*Agourmet 2/2	37,05
-            04 NOV Pag*Terezakatsuko	10,00
-            04 NOV Cobasi Teodoro Sampaio	111,4603 NOV Pag*Mecanicatonimek 2/2	214,50
-            03 NOV Leroy Merlin 3/3	287,28
-            03 NOV Mercpago*Agourmet 2/2	37,05
-            04 NOV Pag*Terezakatsuko	10,00
-            04 NOV Cobasi Teodoro Sampaio	111,4603 NOV Pag*Mecanicatonimek 2/2	214,50
-            03 NOV Leroy Merlin 3/3	287,28
-            03 NOV Mercpago*Agourmet 2/2	37,05
-            04 NOV Pag*Terezakatsuko	10,00
-            04 NOV Cobasi Teodoro Sampaio	111,4603 NOV Pag*Mecanicatonimek 2/2	214,50
-            03 NOV Leroy Merlin 3/3	287,28
-            03 NOV Mercpago*Agourmet 2/2	37,05
-            04 NOV Pag*Terezakatsuko	10,00
-            04 NOV Cobasi Teodoro Sampaio	111,4603 NOV Pag*Mecanicatonimek 2/2	214,50
-            03 NOV Leroy Merlin 3/3	287,28
-            03 NOV Mercpago*Agourmet 2/2	37,05
-            04 NOV Pag*Terezakatsuko	10,00
-            04 NOV Cobasi Teodoro Sampaio	111,4603 NOV Pag*Mecanicatonimek 2/2	214,50
-            03 NOV Leroy Merlin 3/3	287,28
-            03 NOV Mercpago*Agourmet 2/2	37,05
-            04 NOV Pag*Terezakatsuko	10,00
-            04 NOV Cobasi Teodoro Sampaio	111,4603 NOV Pag*Mecanicatonimek 2/2	214,50
-            03 NOV Leroy Merlin 3/3	287,28
-            03 NOV Mercpago*Agourmet 2/2	37,05
-            04 NOV Pag*Terezakatsuko	10,00
-            04 NOV Cobasi Teodoro Sampaio	111,4603 NOV Pag*Mecanicatonimek 2/2	214,50
-            03 NOV Leroy Merlin 3/3	287,28
-            03 NOV Mercpago*Agourmet 2/2	37,05
-            04 NOV Pag*Terezakatsuko	10,00
-            04 NOV Cobasi Teodoro Sampaio	111,46
-          </p>
+      <Row key={Math.random()}>
+        <Col xs={3}> {item.date} </Col>
+        <Col xs={7}> {item.description} </Col>
+        <Col xs={2}> {item.value} </Col>
+      </Row>
+    )
+  }
+
+  render() {
+    const items = []
+    for (var i = 0; i < 50; i++) {
+      items.push(this.parseItem(feedItem))
+    }
+    return (
+        <Container id="feed-container" className={ this.props.filterOn ? 'filter-on' : 'filter-off' }>
+          {items}
         </Container>
     )
   }

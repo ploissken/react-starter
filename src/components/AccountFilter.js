@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
+// import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -16,12 +16,12 @@ import "react-datepicker/dist/react-datepicker.css"
 
 class AccountFilter extends Component {
   constructor(props) {
-      super(props);
-      this.state = {
-        startDate: undefined,
-        endDate: undefined
-      };
+    super(props)
+    this.state = {
+      startDate: undefined,
+      endDate: undefined
     }
+  }
 
     handleChange (date) {
       console.log(date)
@@ -30,9 +30,6 @@ class AccountFilter extends Component {
   render() {
     return (
       <Container id="filter-container">
-        <Form.Row>
-          <Form.Label size="sm">Filtrar</Form.Label>
-        </Form.Row>
         <Form.Row>
           <Form.Group
             as={Col}
@@ -64,7 +61,7 @@ class AccountFilter extends Component {
           </Form.Group>
 
           <Form.Group as={Col}>
-            <Button size="sm" className="apply-filter-btn" variant="outline-secondary">
+            <Button size="sm" className="apply-filter-btn">
               ✓
             </Button>
           </Form.Group>

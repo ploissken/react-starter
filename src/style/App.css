@@ -1,6 +1,15 @@
+:root {
+  --filter-container-h: 47px;
+  --balance-row-h: 145px;
+  --menu-height: 56px;
+}
+
 @media (max-width: 767px) {
-  #feed-container {
-    height: calc(100vh - 201px);
+  .filter-off {
+    height: calc(100vh - var(--menu-height) - var(--balance-row-h));
+  }
+  .filter-on {
+    height: calc(100vh - var(--menu-height) - var(--balance-row-h) - var(--filter-container-h));
   }
 }
 
@@ -10,21 +19,40 @@
     margin-top: 1em;
   }
 }
-.apply-filter-btn {
+.apply-filter-btn.btn-primary {
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent;
+}
+.apply-filter-btn.btn-primary:hover {
+  color: #9abf35;
+  border-color: #fff;
   background-color: #fff;
 }
 .container {
   border-radius: 3px;
 }
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.dropdown-toggle.btn-outline-secondary {
+  width: 100%;
+  border: 1px solid #ced4da;
+  text-align: left;
+}
 
-#balance-container,
-#filter-container {
+#balance-container {
   padding: 1em;
   margin-top: 1em;
   margin-bottom: 1em;
   text-align: center;
   color: #fff;
   background-color: #9abf35;
+}
+
+#filter-container {
+  padding: 0;
+  background-color: none;
 }
 
 #feed-container {

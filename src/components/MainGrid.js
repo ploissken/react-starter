@@ -5,12 +5,16 @@ import MainMenu from './MainMenu'
 
 
 class MainGrid extends Component {
+
+
+
   // https://react-bootstrap.github.io/layout/grid/
   render() {
     return (
       <BrowserRouter id="main-grid">
-          <MainMenu />
-          <Router />
+        
+        <MainMenu />
+        <Router />
       </BrowserRouter>
     )
   }
