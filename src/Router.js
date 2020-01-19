@@ -13,7 +13,6 @@ class Router extends Component {
           <Route path="/" component={null} />
           <Route path="/account/home" component={BalanceGrid} />
           <Route path="/account/balance" component={BalanceGrid} />
-          <Route path="/account/hack" component={BalanceGrid} />
         </Row>
       </Container>
     )

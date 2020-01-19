@@ -19,7 +19,7 @@ class MainMenu extends Component {
         <Navbar.Collapse className="justify-content-end">
           <Link to="/account/home" className="nav-link"> Home </Link>
           <Link to="/account/balance" className="nav-link"> Extratos </Link>
-          <Link to="/account/hack" className="nav-link"
+          <Link to="#" className="nav-link"
             onClick={() => this.setState({ show: !this.state.show })}>
             Mock
           </Link>
