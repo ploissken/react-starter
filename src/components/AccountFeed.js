@@ -20,7 +20,7 @@ class AccountFeed extends Component {
 
   render() {
     const items = []
-    this.props.transactions.fullList.forEach(transaction => {
+    this.props.transactions.filteredList.forEach(transaction => {
       items.push(this.parseItem(transaction))
     })
 

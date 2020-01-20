@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -23,9 +22,13 @@ class AccountFilter extends Component {
     }
   }
 
-    handleChange (date) {
-      console.log(date)
-    }
+  applyFilter () {
+    this.props.dispatch({
+      type: 'APPLY_FILTER',
+      start: this.state.startDate,
+      end: this.state.endDate
+    })
+  }
 
   render() {
     return (
@@ -61,7 +64,7 @@ class AccountFilter extends Component {
           </Form.Group>
 
           <Form.Group as={Col}>
-            <Button size="sm" className="apply-filter-btn">
+            <Button size="sm" className="apply-filter-btn" onClick={() => this.applyFilter()}>
               ✓
             </Button>
           </Form.Group>
@@ -73,7 +76,7 @@ class AccountFilter extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    sample: state.sample
+    transactions: state.transactions
   }
 }
 

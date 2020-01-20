@@ -77,7 +77,7 @@ class HackModal extends Component {
                 onClick={() => this.generateRandom(1)}>
                 gerar aleatório
               </Button>
-              <Button variant="primary"
+              <Button size="sm" variant="primary"
                 onClick={() => this.saveModel()}>
                 salvar
               </Button>

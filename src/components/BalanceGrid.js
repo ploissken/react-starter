@@ -3,10 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AccountMenu from './AccountMenu'
-// import AccountFilter from './AccountFilter'
 import AccountFeed from './AccountFeed'
-import { connect } from 'react-redux'
-
 
 class BalanceGrid extends Component {
   render() {
@@ -26,11 +23,4 @@ class BalanceGrid extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log('hi, my name is state', state)
-  return {
-    sample: state.sample
-  }
-}
-
-export default connect(mapStateToProps)(BalanceGrid)
+export default BalanceGrid

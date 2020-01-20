@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
@@ -52,7 +51,7 @@ class TreansactionForm extends Component {
             <FormControl
               id={`${title.id}`}
               placeholder={`${title.label}`}
-              value={this.props.model[title.id]}
+              value={`${this.props.model[title.id] || ''}`}
               aria-label={`${title.label}`}
               aria-describedby="basic-addon2"
               onChange={e => this.handleChanged({ id: e.target.id, value: e.target.value })}
@@ -75,11 +74,4 @@ class TreansactionForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log('hi, my name is state', state)
-  return {
-    sample: state.sample
-  }
-}
-
-export default connect(mapStateToProps)(TreansactionForm)
+export default TreansactionForm
