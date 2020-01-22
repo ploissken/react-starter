@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import Spinner from 'react-bootstrap/Spinner'
+import Api from '../Api'
 import { connect } from 'react-redux'
 
 import TransactionForm from './TransactionForm'
@@ -8,6 +10,7 @@ class HackModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      loading: false,
       transactionModel: {
         date: undefined,
         description: undefined,
@@ -51,13 +54,47 @@ class HackModal extends Component {
 
 
   }
-  saveModel () {
-    this.props.dispatch({
-      type: 'ADD_TRANSACTION',
-      transaction: this.state.transactionModel
-    })
+  saveModel = () => {
+    this.setState({ loading: true })
+    console.log(`just set`, this.state)
+
+    Api('/save').get().then(() => {
+      console.log(`then`)
+      this.props.dispatch({
+        type: 'ADD_TRANSACTION',
+        transaction: this.state.transactionModel
+      })
+      this.setState({ loading: false })
+    }).catch(err => console.log(err))
+
   }
   render () {
+    const spinner = this.state.loading
+      ? (<>
+        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        /></>
+      )
+      : 'Salvar'
+
     return this.props.show
       ? (
         <span>
@@ -77,9 +114,9 @@ class HackModal extends Component {
                 onClick={() => this.generateRandom(1)}>
                 gerar aleatório
               </Button>
-              <Button size="sm" variant="primary"
-                onClick={() => this.saveModel()}>
-                salvar
+              <Button size="sm" variant="primary" disabled={this.state.loading}
+                onClick={!this.state.loading ? this.saveModel : null}>
+                { spinner }
               </Button>
             </Modal.Footer>
           </Modal>
