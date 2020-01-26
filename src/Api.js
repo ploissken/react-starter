@@ -1,7 +1,8 @@
 export class Api {
-  get () {
+  post (data) {
     return new Promise(resolve => {
-      setTimeout(() => resolve('ok'), 6000)
+      const persistenceTime = Array.isArray(data) ? 3000 : 1000
+      setTimeout(() => resolve(data), persistenceTime)
     })
   }
 }

@@ -34,7 +34,7 @@ class AccountMenu extends Component {
           { filter }
           <h3> R$ {this.props.transactions.currentBalance} </h3>
           <p>
-            { balanceLabel }
+            Conta { this.props.transactions.accountNumber }: { balanceLabel }
           </p>
         </Container>
     )

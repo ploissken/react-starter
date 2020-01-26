@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
-import HackModal from './HackModal'
+import MockModal from './MockModal'
 
 class MainMenu extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class MainMenu extends Component {
             onClick={() => this.setState({ show: !this.state.show })}>
             Mock
           </Link>
-          <HackModal
+          <MockModal
             show={this.state.show}
             displayChange={() => this.setState({ show: !this.state.show })}
             />

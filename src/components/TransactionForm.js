@@ -21,11 +21,14 @@ class TreansactionForm extends Component {
     this.props.updateModel(newValue)
   }
   render () {
+    const dropdownTitle = this.props.model.type
+      ? this.props.model.type === 'debit' ? 'débito' : 'crédito'
+      : 'tipo de transação'
     const transactionDropdown = (
       <DropdownButton as={Col} size="sm" xs="6" lg="3"
         onSelect={opId => this.handleChanged({id: 'type', value: opId})}
         selected={this.props.model.type}
-        title={this.props.model.type || 'tipo de transação'}
+        title={ dropdownTitle }
         variant="outline-secondary">
         <Dropdown.Item eventKey="credit">crédito</Dropdown.Item>
         <Dropdown.Item eventKey="debit">débito</Dropdown.Item>

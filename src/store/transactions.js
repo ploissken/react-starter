@@ -2,6 +2,7 @@ const initialDate = new Date().setDate(new Date().getDate() - 91)
 const initialSettings = {
   accountCreation: initialDate,
   currentBalance: 0,
+  accountNumber: parseFloat(Math.random() * 100000).toFixed(2).replace('.', '-'),
   fullList: [],
   filteredList: [],
   filterDate: {
@@ -28,11 +29,14 @@ const filterByDate = (list, startDate, endDate) => {
 
 const transactionsReducer = (state = initialSettings, action) => {
   switch(action.type) {
-    case 'ADD_TRANSACTION':
-      const newList = [
-        ...state.fullList,
-        { ...action.transaction, id: state.fullList.length + 1 }
-      ].sort((a, b) => new Date(b.date) - new Date(a.date))
+    case 'ADD_TRANSACTIONS':
+      let newList = [ ...state.fullList ]
+      if (Array.isArray(action.transaction)) {
+        action.transaction.forEach(t => { newList.push({ ...t, id: newList.length + 1 }) })
+      } else {
+        newList.push(action.transaction)
+      }
+      newList = newList.sort((a, b) => new Date(b.date) - new Date(a.date))
       const newListFiltered = filterByDate(newList, state.filterDate.start, state.filterDate.end)
       return {
         ...state,
