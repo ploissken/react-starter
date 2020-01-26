@@ -7,12 +7,6 @@ import { connect } from 'react-redux'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
-// bootstrap loading
-// import Spinner from 'react-bootstrap/Spinner'
-// <Spinner animation="grow"/>
-// <Spinner animation="grow" size="sm"/>
-// <Spinner animation="grow"/>
-
 class AccountFilter extends Component {
   constructor(props) {
     super(props)
@@ -34,11 +28,7 @@ class AccountFilter extends Component {
     return (
       <Container id="filter-container">
         <Form.Row>
-          <Form.Group
-            as={Col}
-            xs="5" md="12" xl="5"
-            style={{ "minWidth": "110px" }}
-            >
+          <Form.Group as={Col} xs="5" md="12" xl="5" style={{ "minWidth": "110px" }} >
             <DatePicker
               className="form-control form-control-sm"
               isClearable
@@ -48,11 +38,7 @@ class AccountFilter extends Component {
               onChange={newDate => this.setState({ startDate: newDate })}/>
           </Form.Group>
 
-          <Form.Group
-            as={Col}
-            xs="5" md="12" xl="5"
-            style={{ "minWidth": "110px" }}
-            >
+          <Form.Group as={Col} xs="5" md="12" xl="5" style={{ "minWidth": "110px" }} >
             <DatePicker
               className="form-control form-control-sm"
               isClearable

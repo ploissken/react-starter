@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import AccountMenu from './AccountMenu'
 import AccountFeed from './AccountFeed'
 
-class BalanceGrid extends Component {
+class AccountGrid extends Component {
   render() {
     const displayFilter = this.props.location.pathname.includes('/balance')
     return (
@@ -23,4 +23,4 @@ class BalanceGrid extends Component {
   }
 }
 
-export default BalanceGrid
+export default AccountGrid
