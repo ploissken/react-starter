@@ -78,7 +78,6 @@ class HackModal extends Component {
 
   saveModel = () => {
     this.setState({ loading: true })
-    console.log(`just set`, this.state)
     this.persistTransactions(this.state.transactionModel).then(() => {
       this.setState({ loading: false, transactionModel: {} })
       this.props.displayChange()

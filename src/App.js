@@ -12,7 +12,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('hi, my name is state', state)
   return {
     sample: state.sample
   }
